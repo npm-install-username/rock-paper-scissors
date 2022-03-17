@@ -9,36 +9,57 @@ function computerPlay(){
 
 function playRound(userChoice,compChoice){
     if (userChoice == "r" & compChoice=="r"){
-        let result = "d"
+        return result = "d"
     } else if (userChoice == "r" & compChoice=="p"){
-        let result = "l"
+        return result = "l"
     }else if (userChoice == "r" & compChoice=="s"){
-        let result = "w"
+        return result = "w"
     }else if (userChoice == "p" & compChoice=="r"){
-        let result = "w"
+        return result = "w"
     }else if (userChoice == "p" & compChoice=="p"){
-        let result = "d"
+        return result = "d"
     }else if (userChoice == "p" & compChoice=="s"){
-        let result = "l"
+        return result = "l"
     }else if (userChoice == "s" & compChoice=="r"){
-        let result = "l"
+        return result = "l"
     }else if (userChoice == "s" & compChoice=="p"){
-        let result = "w"
+        return result = "w"
     }else if (userChoice == "s" & compChoice=="s"){
-        let result = "d"
+        return result = "d"
     }
+    
 }
 
+const rockButton = document.getElementById("rock");
+const paperButton = document.getElementById("paper");
+const scissorsButton = document.getElementById("scissors");
+
+const userButtons = document.querySelectorAll(".userButton")
+
+userButtons.forEach(btn => {
+    btn.addEventListener('click', (e) => {
+        let userChoice = e.target.innerText
+        if(userChoice=="rock"){
+            userChoice ="r"
+        } else if (userChoice=="paper"){
+            userChoice="p"
+        } else if( userChoice =="scissors"){
+            userChoice="s"
+        }
+        console.log(userChoice)
+        let computerChoice = computerPlay()
+        console.log(computerChoice)
+        result = playRound(userChoice,computerChoice)
+        console.log(result);
+        
+        if(result="w"){
+            console.log("win")
+        } else if (result="l"){
+            console.log("lost")
+        } else{
+            console.log("draw")
+        }
+    })
+})
 
 
-
-let userChoice = prompt("enter a choice using r,p or s")
-
-playRound(userChoice,computerPlay())
-if(result="w"){
-    console.log("win")
-} else if (result="l"){
-    console.log("lost")
-} else{
-    console.log("draw")
-}
